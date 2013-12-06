@@ -3,9 +3,9 @@
 # ----------------------- #
 
 url: http://chisj.github.io
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+title: 池上金的技术博客
+subtitle: 不忘初心，方得始终
+author: Chisj
 simple_search: http://google.com/search
 description:
 
@@ -68,10 +68,6 @@ github_repo_count: 0
 github_show_profile_link: true
 github_skip_forks: true
 
-# Twitter
-twitter_user:
-twitter_tweet_button: true
-
 # Google +1
 google_plus_one: false
 google_plus_one_size: medium
@@ -96,5 +92,3 @@ disqus_show_comment_count: false
 # Google Analytics
 google_analytics_tracking_id:
 
-# Facebook Like
-facebook_like: false
