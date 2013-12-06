@@ -8,7 +8,7 @@ categories:
 上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
 搜索了一下，答案在
 
-[这里](http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash" title="http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash">http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash)
+[这里](http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash)
 
 
 用国语说就是：
