@@ -10,7 +10,8 @@
 
   
   <meta name="description" content="上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
-搜索了一下，答案在这里 http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash &hellip;">
+搜索了一下: 在发布的target的build phase的link binary删掉SenTestingKit
+然后在单元测试的build phase加上它。 记得有人说过： &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,19 +92,12 @@
 
 
 <div class="entry-content"><p>上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
-搜索了一下，答案在这里</p>
-
-<p><a href="http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash">http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash</a></p>
-
-<p>用国语说就是：</p>
+搜索了一下:</p>
 
 <p>在发布的target的build phase的link binary删掉SenTestingKit
 然后在单元测试的build phase加上它。</p>
 
-<p>记得有人说过：</p>
-
-<pre><code>    越是看起来表现怪异的bug，其原因往往越是简单。
-</code></pre>
+<p>记得有人说过：越是看起来表现怪异的bug，其原因往往越是简单。</p>
 
 <p>悲剧地验证了。</p>
 </div>
