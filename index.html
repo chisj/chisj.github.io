@@ -9,8 +9,7 @@
   <meta name="author" content="Chisj">
 
   
-  <meta name="description" content="拿书上的第一段源码作为例子： #include "apue.h"
-#include &lt;dirent.h&gt; int main(int argc, char *argv[]) { DIR *dp; struct dirent *dirp; if (argc != 2) { err_quit &hellip;">
+  <meta name="description" content="其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。 那么， &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,6 +63,673 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/">如何去除UISearchBar颜色的阴影</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:32:46+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。</p>
+
+<p>那么，就让那讨厌的“背景View”透明吧：</p>
+
+<pre><code>@interface UISearchBar (CustomBackground)
+
+@end
+
+
+@implementation UISearchBar( CustomBackground )
+
+- (void)drawRect:(CGRect)rect {
+    for( UIView *subview in self.subviews ) {
+        if( [subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+        [subview setAlpha:0.0F];
+        break;
+        }
+    }
+}
+
+@end
+</code></pre>
+
+<p>Update:在实际开发中还是用CustomBackgroundSearchBar : UISearchBar 好一点，毕竟存在有点UISearchBar需要定制而另外的又不需要的情况，用Category比较不好控制。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/">初练空手道的几点感悟</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:30:41+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>两周前，我开始练习空手道，从最初的礼仪、体能和基本技开始，在指导和教练的带领下，初步领略到这门武术的一些精妙之处。记录这些心得，以便未来的自己反省，如果因此给有心之人带来一点点启迪，则“善莫大焉”。</p>
+
+<h4>不忘初心</h4>
+
+<p>“不忘初心，方得始终”是佛经中的话，告诫人们时刻保持清醒，记住自己最初的梦想，并为此而刻苦修炼，不断追求。</p>
+
+<p>“不忘初心，方得始终”也是空手道修炼者的最终武学追求，像会馆道场训里的“将会终身修炼空手道”，就是不忘初心的一种方式。无论等级，段位，都能坚持练习基本技，我想一方面是保持肌肉记忆，另一方面也是在意志上表达一种永不改变的初心。</p>
+
+<p>佛法如此，武学如此，编程亦如此。如能保持一颗初学者的谦卑之心，即使时过境迁，也不因水平的提高，收入的上升和地位的变化而迷失自我，则编程之路能更加长久和快乐。</p>
+
+<h4>尊敬之心</h4>
+
+<p>空手道有严格的段级位，每个段级位都有对应颜色的腰带，给教练因材施教带来极大方便。但我认为这并不是一种严格的上下等级关系，因为道场中所有人一样，见面行同样礼仪，说一句“OSU”，相互之间非常尊敬。</p>
+
+<p>现在软件团队越来越懂得实行关系的扁平化，调动工程师的积极性，就连版本管理也向Git提倡的分布式方向发展。你看，软件开发也讲究民主。但也常常有不满和自负的人，抱怨永远多于实干，我认为这类人的问题在于缺少“尊敬之心”。</p>
+
+<p>尊敬并非示弱，越强者越尊敬别人，因为强者关注的一直都是向别人学习，要超越的是自己。</p>
+
+<h4>专注之心</h4>
+
+<p>有人在IM里讨论，该练习什么武术对付一些特定危险情形，有人甚至拿出了一些“祖传”武学秘诀截图。这时指导说了：哪有那么多情况，一力降十会，练好跑步练好力量。</p>
+
+<p>“一力降十会”，讲得就是专注，李小龙曾经说过：我不怕练过一万种踢法的人，我只怕将一种踢法练过一万次的人。专注才能深刻，技巧并非没用，但所有的技巧都是在力量和速度的基础上发挥的，内外功修炼到极致的高手，稍加研究技巧，就能浑然天成，无招胜有招。</p>
+
+<p>这一点和编程简直太像了！在所有的编程社区，都一直存在编程语言之争，有这么一个笑话：</p>
+
+<pre><code>      某女：“你能让这个论坛的人都吵起来，我就跟你约会。”
+      某程序猿：“PHP是最好的语言！ ”
+      某论坛炸锅了，各种吵架。
+      某女：“服了你了，我们走吧。”
+      某程序猿：“今天不行，我一定要说服他们，PHP必须是最好的语言。”
+</code></pre>
+
+<p>现实世界中看起来聪明绝顶的geek们，其实也爱争论茴香豆的茴字哪种写法更正宗，哈哈。</p>
+
+<p>而我见过的编程高手，则一直能保持专注之心，不忘事物本质，刻苦训练而终于在某个方面有所成就。</p>
+
+<p>上周五训练课，道场里来了一位日本朋友，六十多岁了，系着白腰带从头练起，和我双人对练踢腿的时候，几分钟就满头大汗了。可他每个动作都有板有眼地跟着做，认真听着教练的纠正解说，那一刻，我觉得他的内心和三十年前一样，只有纯粹的武学追求。和六十多岁的老人比起来，我们有什么理由不锻炼自己身体？有什么理由不热爱这个世界！</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/sentestingkit-not-loaded/">SenTestingKit Not Loaded</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:28:02+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
+搜索了一下，答案在</p>
+
+<p><a href="http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash%22%20title=%22http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash%22>http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash&#8221;>这里</a></p>
+
+<p>用国语说就是：</p>
+
+<p>在发布的target的build phase的link binary删掉SenTestingKit
+然后在单元测试的build phase加上它。</p>
+
+<p>记得有人说过：</p>
+
+<pre><code>    越是看起来表现怪异的bug，其原因往往越是简单。
+</code></pre>
+
+<p>悲剧地验证了。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/gai-liao-san-zhou-de-bug/">改了三周的bug</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:26:54+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>过去的三周，我基本上是在解决91执行的bug，很多很多的bug，五六十个吧，当它们被标记为closed之后，我甚至都不愿再看。</p>
+
+<p>为什么会有这么多bug！！</p>
+
+<p>我看着这些一年前的代码，写得真是烂：厚重的controller层、经常性的大段重复、不恰当的单例模式，不敢相信文件头里都写这create by csj， 2012。有时候，在修修补补的时候，我感觉自己快搞不定这些东西了，或许应该请求支援。</p>
+
+<p>但是看看安卓端的太伟一个人默默地翻着他的eclipse，我又坚持下来了，不能给队友看到我崩溃的样子啊，怕影响他幼小心灵。</p>
+
+<p>今天下班前把程序包提交给iTunes Connect，再打一个助手包给运营的哥们，然后可以刷网易新闻了，边刷边想，这TMD，才这么点bug，差点把自己搞趴下。</p>
+
+<p>不过计划3天搞定的事情，来来回回搞了3周，总是不太好，这件破事，得给自己一个说法。</p>
+
+<p>需求经常有前后彻底变化的，这里的变化不是说红色变蓝色，加一个按钮少一个页面这样的东西，很多东西是反着的。并且正反面来回变，翻来覆去地变，有时候不得不去想是不是策划在耍程序员。</p>
+
+<p>说到这里有的产品经理不乐意了，估计他们只把自己想法的百分之一做成了设计稿，还想怎么样！他们甚至承诺再改需求就剁手。（笑）</p>
+
+<p>当然当然，如果需求不变，就不需要请我这样幽默而又有才华的程序员来写代码了，我们确实需要结构良好，方便扩展，经得起来回蹂躏的代码，怪不得惠阳哥哥经常说程序员的基本属性就是耐操。</p>
+
+<p>我真想穿越到一年前的自己身边，用手指指着当时的自己问：你自己看看这些代码！你看看你这写代码的态度！你耐操吗！</p>
+
+<p>所以问题一定在自己身上，代码质量其实也遵守一定的能量守恒定律的，如果写的时候专注得不够，就不得不在后面维护的时候付出更多来弥补。而且，需要付出的能量也和房价一样，随时间恐怖地增长。</p>
+
+<p>不过我越来越感觉到，专注也并不是一整个上午坐在显示器前疯狂打字，跟策划，交互，美术和QA四个角色的沟通真是越来越重要了，网上的读者体文章都说过，你对自己当前所做事情的理解越深，你就越接近于一个超级程序员。</p>
+
+<p>总之，代码需要更好的结构，但每天和其他其他几个职位的同事交流感情似乎更加重要，我是认真考虑这种事情的，我打算下一个项目里我每天都抽出固定的时间来分别问他们三个问题，即使问一下他们的手机是否升级到了最近版本的系统也不错！</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/">记录UIPageViewController不能正确地setNavigationBarHidden的一个坑</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:25:15+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>今天碰到一个奇怪bug：UIPageViewController的viewControllers里面做</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>[self.navigationController setNavigationBarHidden:YES animated:animated];</span></code></pre></td></tr></table></div></figure>
+
+
+<p>操作，在iOS5里面，可以成功隐藏UIPageViewController的navBar，但是在iOS6里面，却只能在view已经显示完成手动调用才可以隐藏，而写在UIPageViewController的viewcontrollers里面的如下代码</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>- (void)viewWillAppear:(BOOL)animated {
+</span><span class='line'>    [super viewWillAppear:animated];
+</span><span class='line'>    [self.navigationController setNavigationBarHidden:YES animated:animated];
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>却不起作用！！！</p>
+
+<p><strong>一般来说，低版本不可用高版本可用，第一步分析是不是使用了高版本才有的api；而高版本不可用低版本却可用，第一步分析是否函数已经过期不再被调用（就像viewDidunload那样)和函数的被调用顺序是否已经改变</strong></p>
+
+<p>经过打印log分析得出结论：</p>
+
+<p><strong>在iOS5里，UIPageViewController会先调用自身的viewWillAppear，然后再调用它的viewControllers的viewWillAppear</strong></p>
+
+<p><strong>在iOS6里，UIPageViewController会先调用它的viewControllers的viewWillAppear，然后再调用自身的viewWillAppear</strong></p>
+
+<p>so，为了在iOS5和iOS6里都能正确地在UIPageViewController一显示就隐藏navbar，只要把setNavigationBarHidden写到UIPageViewController的viewWillAppear。听起像白痴的废话，都是苹果造成的！</p>
+
+<p>莫名其妙的一个坑，UIPageViewController Class Reference什么都没提起！！！</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/zui-jin/">最近</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:22:37+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>最近听的一首歌是beyond的《卑面派对》
+你话唔俾面
+佢话唔赏面
+似为名节做奴隶
+你都咪话唔俾面
+咪话唔赏面
+似用人脸造钱币
+ ……</p>
+
+<p>最近得到的一笔收入，是从美女手上直接拿的一张钞票，面值很大：
+<img src="http://ww2.sinaimg.cn/bmiddle/73a4517bgw1e2jw11t25rj.jpg" alt="  " /></p>
+
+<p>最近提的代码，是上午加的“团队成员列表”和“团队成员任务列表”两个地方Button的Actions，一个“新增任务”，“一个打电话”，一个表面上是“发邮件”实际上是“发短消息”。</p>
+
+<p>我这里解释一下吧：乔布斯设计的泡泡图标是短消息，信封图标是发邮件，而如果把信封图标作为发短消息，那发邮件只能使用泡泡图标了？哦不，或许我们应该重新设计一个图标来表示发邮件，乔布斯改变一切？我们改变乔布斯。</p>
+
+<p>不过，这真的无关紧要，神经病才在乎这种无聊又枯燥还毫无根据的东西。</p>
+
+<p>最近还值得一提的事，是被请喝咖啡，我也忘记自己是不是第一次去咖啡厅喝咖啡了，总之很紧张，因为这次人家请我喝我心里真的觉得很荣幸。</p>
+
+<p>紧张之余，我点了一杯卡布奇诺，我承认我是看着这个名字比较眼熟才点的，对了，我不是针对读者的好友列表的那三个网名叫“卡布奇诺”的人，我真的不认识他们。</p>
+
+<p>请我的人也点了一杯卡布奇诺，而且是在我之前点的，我点完就想起了，想起就觉得有点尴尬，这充分说明我一点都不善考虑身边人感受。等咖啡拿过来，我又想起为了提神，我不久前就在工位前喝了一杯速溶铭咖啡，这也充分说明我是一个连自己的感受都很容易忘记的人。</p>
+
+<p>所以我把无聊和无关痛痒都记录下来，我相信自己很快就会忘记，太多的最近，因为没有记录，就成了当年，当年我还横渡了静湖呢，要是没有记录，谁会记得！</p>
+
+<p>最近一次写日志，是2012年的4月1日，整篇日志标题加正文再算上标点符号，才14个字。一年多以来我都没怎么写汉字了，这样不好，我这么幽默而又有才华，不写日志太浪费了。</p>
+
+<p>一年来，非常感谢@叶坤，11年底还是你教我使用Mac系统呢。 @太伟和@太伟的二狗子，带给了我们很多欢乐， @必渠，给我们创造了自由的工作氛围，也教了我很多的iOS开发知识。2013年，希望我们继续给力啊，团队和个人都可以继续成长。我从打算做iOS开发的时候就决定了会花10000个小时来做这一件事情  <a href="http://www.ruanyifeng.com/blog/2011/04/the_dan_plan.html" title="http://www.ruanyifeng.com/blog/2011/04/the_dan_plan.html" target="_blank"></a></p>
+
+<p>在这10000个小时内，我会重复，会犯错，会看着别人离开，可能自己也离开，但我不会放弃。按照251个工作日计算，一天算平均5小时在做开发，那么一年就花了1200多个小时，照这个速度，还要7年才能满。为了赶在苹果倒闭之前完成计划，唯一的方法只有和时间赛跑了。</p>
+
+<p>希望我老了看到这些最近，不会感到太过后悔。</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma/">在UIWebView中调用Object-c本地代码</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:20:59+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>有些时候，HTML5可以做很酷的事情，比如绚丽的动画，或者快速开发跨平台的产品模型。于是我们希望JS代码和Native App多做些交互，比如在UIWebView的JS代码中调用本地的Object-c代码。</p>
+
+<p>实际的需求是我们需要在APP里展示一个动画，动画运行结束后自己消失。
+实现的思路是：让Parter做一个HTML5动画，然后用UIWebView调用本地的HTML5文件展示动画，在动画结束之后，用JS代码回调Object-c代码，dismiss掉UIWebView。我们知道UIWebView有一个@optional的Delegate：</p>
+
+<pre><code>- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType;
+</code></pre>
+
+<p>从文档里可以知道每个UIWebView在load一个frame的时候(说实在的我也不懂load一个frame是什么意思！暂且理解为收到一个某种类型的url request请求吧。)都会调用这个函数，那我们就可以在这个函数里拦截url并决定是否开始load动作。我在这里是想要调用Object-c代码来dismiss掉WebView本身，当然不让load。</p>
+
+<p>以下是实现的代码：</p>
+
+<ul>
+<li><p>JS代码</p>
+
+<pre><code>  window.loaction = "action?dismiss";
+</code></pre>
+
+<p>  （我把这个理解成导致UIWebView开始load frame动作的原因，你如果熟悉JS代码的话可以告诉我原理啊。）</p></li>
+<li><p>Object-c代码</p>
+
+<p>  新建UIWebViewController并显示：</p>
+
+<pre><code>  //加载本地HTML5
+  UIWebView *webView = [[UIWebView alloc] initWithFrame:APP_FRAME];
+  NSURL *url = [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:@"index" ofType:@"html" inDirectory:@"yourHTMLDirectory"]];
+  webView.delegate = self;
+  [webView loadRequest:[NSURLRequest requestWithURL:url]];
+
+  //Pop WebViewController
+  loginAdController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+  loginAdController.view = webView;
+  [webView release];
+  [homePage presentModalViewController:loginAdController animated:YES];
+  [loginAdController release];
+</code></pre>
+
+<p>  UIWebViewDelgate：</p>
+
+<pre><code>  - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+      NSString *url = [[request URL] absoluteString];
+      NSArray *urlArray = [url componentsSeparatedByString:@"/"];
+      NSString *actionString = [urlArray lastObject];
+      if ( actionString &amp;&amp; [actionString isEqualToString:@"action?dismiss"]) {
+          [self performSelector:@selector(dismissAdWebView) withObject:nil afterDelay:2.5];
+          return NO;
+      }
+
+      return YES;
+  }
+</code></pre>
+
+<p>  dismiss掉动画：</p>
+
+<pre><code>  - (void)dismissAdWebView {
+      [loginAdController dismissModalViewControllerAnimated:YES];
+  }
+</code></pre></li>
+</ul>
+
+
+<p>至此整个功能完成。</p>
+
+<p>参考文档：</p>
+
+<p><a href="http://stackoverflow.com/questions/1662473/how-to-call-objective-c-from-javascript">http://stackoverflow.com/questions/1662473/how-to-call-objective-c-from-javascript</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category/">[翻译]给Object-c的Category新增Properties(Adding Properties to an Objective-C Category)</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:18:41+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>如果需要给一个category保存一些信息，很不幸，你不能直接给它新增实例变量，但你可以新增一个“Associated Reference”，文档在</p>
+
+<p><a href="https://developer.apple.com/library/ios/#DOCUMENTATION/Cocoa/Conceptual/ObjectiveC/Chapters/ocAssociativeReferences.html">这里</a></p>
+
+<blockquote><p>Associative references,Mac OS X 10.6以后可用，给当前类新增一个模拟的实例变量</p></blockquote>
+
+<h2>使用Associated Reference实现Property存储</h2>
+
+<p>我们可以用这种技术给编译后的Class设置一个想要的Property。在这个例子里，我想给UIView指定类型，新增一个styleName。</p>
+
+<pre><code>    @interface UIView (DHStyleManager)
+    @property (nonatomic, copy) NSString* styleName;
+    @end
+
+    #import "UIViewDHStyleManager.h"
+
+    NSString * const kDHStyleKey = @"kDHStyleKey";
+</code></pre>
+
+<p> <br></p>
+
+<pre><code>    @implementation UIView (DHStyleManager)
+
+    - (void)setStyleName:(NSString *)styleName
+    {
+        objc_setAssociatedObject(self, kDHStyleKey, styleName, OBJC_ASSOCIATION_COPY);
+    }
+
+    - (NSString*)styleName
+    {
+        return objc_getAssociatedObject(self, kDHStyleKey);
+    }
+
+    @end
+</code></pre>
+
+<p>当UIView实例release的时候，对应的Associated Reference也会被release。</p>
+
+<p>这种技术使得设置自定义Property给运行时的UIView成为可能，如果你只是想实现一些诸如增加Property之类的简单需求，这无疑是一种很好的继承替代方案。</p>
+
+<pre><code>    #import UIViewDHStyleManager.h"
+
+    UIView* v = [[[UIView alloc] init] autorelease];
+    v.styleName = @"someStyleName";
+    NSLog(@"v = %@",v.styleName); //Logs 'someStyleName'
+</code></pre>
+
+<h2>关于</h2>
+
+<p>你好，我是<a href="http://www.twitter.com/davidhamrick">David Hamrick</a>,我是<a href="http://www.hamrick.com/">Hamrick Software</a>软件公司拥有人之一。我们开发了一款叫做“VueScan”的扫描仪驱动软件，它支持OS X，Windows，Linux，和iOS。</p>
+
+<hr />
+
+<p>注：@property为assign的时候，如果property指向的对象已经被释放，用 ![]self styleName]貌似不能判断为空，property已经成了野指针，需谨慎使用以免带来bug。</p>
+
+<p>原文地址：<a href="http://www.davidhamrick.com/2012/02/12/Adding-Properties-to-an-Objective-C-Category.html">http://www.davidhamrick.com/2012/02/12/Adding-Properties-to-an-Objective-C-Category.html</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan/">Mac OS X 10.8.2 下尝试Go语言</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:16:30+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h2>安装Go</h2>
+
+<p>*. 安装Mercurial</p>
+
+<pre><code>    sudo easy_install mercurial
+</code></pre>
+
+<p>*. 获取Go源码</p>
+
+<pre><code>$ hg clone -r release https://go.googlecode.com/hg/ go
+</code></pre>
+
+<p>*. 源码下载完成之后，安装Go</p>
+
+<pre><code>$ cd go/src
+    $ ./all.bash
+</code></pre>
+
+<p>*. 根据安装信息的最后一段提示，在etc/paths文件里，用管理员指令(sudo)添加Go Path。</p>
+
+<h2>HelloWorld</h2>
+
+<p>*. 编写源代码</p>
+
+<pre><code>package main
+
+import "fmt"
+
+func main() {
+      fmt.Printf("hello, world\n")
+}
+</code></pre>
+
+<p>保存为HelloWorld.go,cd到源码目录</p>
+
+<pre><code>go build HelloWorld.go
+</code></pre>
+
+<p>如果有错误，检查源代码，很可能是没有错误，并且已经生成了HelloWorld可执行文件。</p>
+
+<pre><code>./HelloWorld
+</code></pre>
+
+<p>至此，HelloWorld完成。</p>
+
+<h2>Go之初体验</h2>
+
+<ol>
+<li><p>Go语言语法和C语言类似，很适合科班程序员学习新语言或者底层C语言开发人员学应用开发的时候使用。它没有C语言那么自由，比如{}的语句块，前一个{必须放在控制语句后面，不得另起一行，在C语言中，有一种严格的编码规范就是像Go这样，但是这一点貌似不能说明什么，Go只是少了一种无谓的选择。不过，if，for和switch语句控制快少了()，语句结尾不需要&#8221;;&ldquo;，甚至，少掉了else语句，干掉了异常处理。</p></li>
+<li><p>不过，switch语句更智能了，函数支持多个返回值了，并且只要简单的&#8221;return reval1, reval2&#8221;就可以返回两个值。Go可真是该减肥的地方就减肥了，该丰满的地方就丰满到了恰到好处，我很喜欢的Object-c虽然也近乎完美地扩展了C语言，但其封闭的生态首先比不上Go了.一味简单地往C语言身上加特性，就没有Go的减肥功效啦！</p></li>
+<li><p>其他更强大的并行特性，网络编程支持等，以后学习了再分享。</p></li>
+</ol>
+
+
+<h2>观点</h2>
+
+<ol>
+<li><p><a href="http://blog.codingnow.com/2010/11/go_prime.html">我发现我花了四年时间锤炼自己用 C 语言构建系统的能力，试图找到一个规范，可以更好的编写软件。结果发现只是对 Go 的模仿。——云风《Go 语言初步》</a></p></li>
+<li><p><a href="http://www.cnblogs.com/AllenDang/archive/2012/03/03/2378534.html">我为什么喜欢Go语言——AllenDang</a></p></li>
+</ol>
+
+
+<p>参考资料：<a href="https://golang-china.googlecode.com/svn/trunk/Chinese/golang.org/index.html#toc2">Go语言文档</a></p>
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -174,7 +840,23 @@ MacSys
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa/">APUE源码编译方法</a>
+        <a href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/">如何去除UISearchBar颜色的阴影</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/">初练空手道的几点感悟</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/sentestingkit-not-loaded/">SenTestingKit Not Loaded</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/gai-liao-san-zhou-de-bug/">改了三周的bug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/">记录UIPageViewController不能正确地setNavigationBarHidden的一个坑</a>
       </li>
     
   </ul>
