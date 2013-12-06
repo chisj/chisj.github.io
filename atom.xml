@@ -4,7 +4,7 @@
   <title><![CDATA[池上金的技术博客]]></title>
   <link href="http://chisj.github.io/atom.xml" rel="self"/>
   <link href="http://chisj.github.io/"/>
-  <updated>2013-12-06T18:20:41+08:00</updated>
+  <updated>2013-12-06T18:30:19+08:00</updated>
   <id>http://chisj.github.io/</id>
   <author>
     <name><![CDATA[Chisj]]></name>
@@ -99,7 +99,7 @@
     <content type="html"><![CDATA[<p>上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
 搜索了一下，答案在</p>
 
-<p><a href="http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash%22%20title=%22http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash%22>http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash&#8221;>这里</a></p>
+<p><a href="http://stackoverflow.com/questions/9456020/why-is-sentestingkit-causing-my-app-to-crash">这里</a></p>
 
 <p>用国语说就是：</p>
 
