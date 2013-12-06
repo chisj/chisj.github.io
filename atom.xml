@@ -4,7 +4,7 @@
   <title><![CDATA[池上金的技术博客]]></title>
   <link href="http://chisj.github.io/atom.xml" rel="self"/>
   <link href="http://chisj.github.io/"/>
-  <updated>2013-12-06T16:10:30+08:00</updated>
+  <updated>2013-12-06T16:22:26+08:00</updated>
   <id>http://chisj.github.io/</id>
   <author>
     <name><![CDATA[Chisj]]></name>
@@ -12,5 +12,67 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[APUE源码编译方法]]></title>
+    <link href="http://chisj.github.io/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa/"/>
+    <updated>2013-12-06T16:17:01+08:00</updated>
+    <id>http://chisj.github.io/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa</id>
+    <content type="html"><![CDATA[<p>拿书上的第一段源码作为例子：</p>
+
+<pre><code>#include "apue.h"
+#include &lt;dirent.h&gt;
+
+int main(int argc, char *argv[]) {
+    DIR *dp;
+    struct dirent *dirp;
+
+    if (argc != 2) {
+        err_quit("usage:ls direntory_name");
+    }
+    if ((dp = opendir(argv[1])) == NULL)
+    err_sys("can't open %s", argv[1]);
+    while ((dirp =  readdir(dp)) != NULL)
+    printf("%s\n", dirp-&gt;d_name);
+
+    closedir(dp);
+    exit(0);
+}
+</code></pre>
+
+<p>源码里的apue.h并没有实现err_quit函数，因为实现在apue源码包的lib里。</p>
+
+<p>先下载apue源码包：<a href="http://download.csdn.net/detail/i2c_rs485/4614061">http://download.csdn.net/detail/i2c_rs485/4614061</a>  (第二版使用，不保证更新)</p>
+
+<p>然后：</p>
+
+<ol>
+<li><p>解压文件到apue.2e目录</p></li>
+<li><p>修改相应平台的文件,我使用的是mac,所以修改Make.defines.macos
+你修改的只需要这一行WKDIR=/home/your_dir/apue2e_src/apue.2e,改成自己的目录路径</p></li>
+<li><p>cd到apue.2e目录的lib目录下， 执行make -f macos.mk，之后你会在lib目录下面找到libapue.a这个文件.
+现在,你可以把它拷贝到任何地方,在编写例子的时候,你就可以</p></li>
+<li><p>拷贝apue2e_src/apue.2e/include/apue.h和apue2e_src/apue.2e/lib/libapue.a
+到你的源代码目录。</p></li>
+<li><p>使用gcc -o hello hello.c libapue.a来编译你的源代码</p></li>
+</ol>
+
+
+<p>使用上面的方法编译第一段源码：</p>
+
+<pre><code>gcc -o myls myls.c libapue.a 
+</code></pre>
+
+<p>运行：</p>
+
+<pre><code>unit_1 ihome$ ./myls /Volumes
+.
+..
+BOOTCAMP
+File
+MacSys
+</code></pre>
+]]></content>
+  </entry>
   
 </feed>
