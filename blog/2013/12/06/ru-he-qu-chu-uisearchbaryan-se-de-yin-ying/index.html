@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>如何去除UISearchBar颜色的阴影 - 池上金的技术博客</title>
+  <meta name="author" content="Chisj">
+
+  
+  <meta name="description" content="其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。 那么， &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chisj.com/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="池上金的技术博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46268053-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">池上金的技术博客</a></h1>
+  
+    <h2>不忘初心，方得始终</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:chisj.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">如何去除UISearchBar颜色的阴影</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:32:46+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。</p>
+
+<p>那么，就让那讨厌的“背景View”透明吧：</p>
+
+<pre><code>@interface UISearchBar (CustomBackground)
+
+@end
+
+
+@implementation UISearchBar( CustomBackground )
+
+- (void)drawRect:(CGRect)rect {
+    for( UIView *subview in self.subviews ) {
+        if( [subview isKindOfClass:NSClassFromString(@"UISearchBarBackground")]) {
+        [subview setAlpha:0.0F];
+        break;
+        }
+    }
+}
+
+@end
+</code></pre>
+
+<p>Update:在实际开发中还是用CustomBackgroundSearchBar : UISearchBar 好一点，毕竟存在有点UISearchBar需要定制而另外的又不需要的情况，用Category比较不好控制。</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Chisj</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T17:32:46+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+      <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tools_2"></a>
+	<a class="jiathis_button_tools_3"></a>
+	<a class="jiathis_button_tools_4"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1372407507182199" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+<!-- UY END -->
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/" title="Previous Post: 初练空手道的几点感悟">&laquo; 初练空手道的几点感悟</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  	<h1>About Me</h1>
+  	<p>iOS程序员</p>
+  	<p>阿森纳球迷，空手道修炼者</p> 
+    <p>人在福州</p>
+    <p>chisj2012#gmail.com</p>
+</section>
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/">如何去除UISearchBar颜色的阴影</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/">初练空手道的几点感悟</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/sentestingkit-not-loaded/">SenTestingKit Not Loaded</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/gai-liao-san-zhou-de-bug/">改了三周的bug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/">记录UIPageViewController不能正确地setNavigationBarHidden的一个坑</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Chisj -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F5d77bc862f24fbf7b96ef97a91590ee4' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</body>
+</html>

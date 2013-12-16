@@ -1,110 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
 
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<head>
-  <meta charset="utf-8">
-  <title>池上金的技术博客</title>
-  <meta name="author" content="Chisj">
-
-  
-  <meta name="description" content="其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。 那么， &hellip;">
-  
-
-  <!-- http://t.co/dKP3o1e -->
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  
-  <link rel="canonical" href="http://chisj.com">
-  <link href="/favicon.png" rel="icon">
-  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-  <link href="/atom.xml" rel="alternate" title="池上金的技术博客" type="application/atom+xml">
-  <script src="/javascripts/modernizr-2.0.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
-  <script src="/javascripts/octopress.js" type="text/javascript"></script>
-  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
-
-  
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-46268053-1']);
-    _gaq.push(['_trackPageview']);
-
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-
-
-</head>
-
-<body   >
-  <header role="banner"><hgroup>
-  <h1><a href="/">池上金的技术博客</a></h1>
-  
-    <h2>不忘初心，方得始终</h2>
-  
-</hgroup>
-
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:chisj.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
-<ul class="main-navigation">
-  <li><a href="/">首页</a></li>
-  <li><a href="/blog/archives">所有文章</a></li>
-</ul>
-
-</nav>
-  <div id="main">
-    <div id="content">
-      <div class="blog-index">
-  
-  
-  
-    <article>
-      
-  <header>
+  <title><![CDATA[池上金的技术博客]]></title>
+  <link href="http://chisj.com/atom.xml" rel="self"/>
+  <link href="http://chisj.com/"/>
+  <updated>2013-12-16T20:05:39+08:00</updated>
+  <id>http://chisj.com/</id>
+  <author>
+    <name><![CDATA[Chisj]]></name>
     
-      <h1 class="entry-title"><a href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/">如何去除UISearchBar颜色的阴影</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
 
   
-
-
-<time datetime="2013-12-06T17:32:46+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。</p>
+  <entry>
+    <title type="html"><![CDATA[如何去除UISearchBar颜色的阴影]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/"/>
+    <updated>2013-12-06T17:32:46+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying</id>
+    <content type="html"><![CDATA[<p>其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。</p>
 
 <p>那么，就让那讨厌的“背景View”透明吧：</p>
 
@@ -128,42 +42,15 @@
 </code></pre>
 
 <p>Update:在实际开发中还是用CustomBackgroundSearchBar : UISearchBar 好一点，毕竟存在有点UISearchBar需要定制而另外的又不需要的情况，用Category比较不好控制。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/">初练空手道的几点感悟</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:30:41+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>两周前，我开始练习空手道，从最初的礼仪、体能和基本技开始，在指导和教练的带领下，初步领略到这门武术的一些精妙之处。记录这些心得，以便未来的自己反省，如果因此给有心之人带来一点点启迪，则“善莫大焉”。</p>
+  <entry>
+    <title type="html"><![CDATA[初练空手道的几点感悟]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/"/>
+    <updated>2013-12-06T17:30:41+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu</id>
+    <content type="html"><![CDATA[<p>两周前，我开始练习空手道，从最初的礼仪、体能和基本技开始，在指导和教练的带领下，初步领略到这门武术的一些精妙之处。记录这些心得，以便未来的自己反省，如果因此给有心之人带来一点点启迪，则“善莫大焉”。</p>
 
 <h4>不忘初心</h4>
 
@@ -201,42 +88,15 @@
 <p>而我见过的编程高手，则一直能保持专注之心，不忘事物本质，刻苦训练而终于在某个方面有所成就。</p>
 
 <p>上周五训练课，道场里来了一位日本朋友，六十多岁了，系着白腰带从头练起，和我双人对练踢腿的时候，几分钟就满头大汗了。可他每个动作都有板有眼地跟着做，认真听着教练的纠正解说，那一刻，我觉得他的内心和三十年前一样，只有纯粹的武学追求。和六十多岁的老人比起来，我们有什么理由不锻炼自己身体？有什么理由不热爱这个世界！</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/sentestingkit-not-loaded/">SenTestingKit Not Loaded</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:28:02+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
+  <entry>
+    <title type="html"><![CDATA[SenTestingKit Not Loaded]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/sentestingkit-not-loaded/"/>
+    <updated>2013-12-06T17:28:02+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/sentestingkit-not-loaded</id>
+    <content type="html"><![CDATA[<p>上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
 搜索了一下:</p>
 
 <p>在发布的target的build phase的link binary删掉SenTestingKit
@@ -245,42 +105,15 @@
 <p>记得有人说过：越是看起来表现怪异的bug，其原因往往越是简单。</p>
 
 <p>悲剧地验证了。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/gai-liao-san-zhou-de-bug/">改了三周的bug</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:26:54+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>过去的三周，我基本上是在解决91执行的bug，很多很多的bug，五六十个吧，当它们被标记为closed之后，我甚至都不愿再看。</p>
+  <entry>
+    <title type="html"><![CDATA[改了三周的bug]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/gai-liao-san-zhou-de-bug/"/>
+    <updated>2013-12-06T17:26:54+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/gai-liao-san-zhou-de-bug</id>
+    <content type="html"><![CDATA[<p>过去的三周，我基本上是在解决91执行的bug，很多很多的bug，五六十个吧，当它们被标记为closed之后，我甚至都不愿再看。</p>
 
 <p>为什么会有这么多bug！！</p>
 
@@ -305,42 +138,15 @@
 <p>不过我越来越感觉到，专注也并不是一整个上午坐在显示器前疯狂打字，跟策划，交互，美术和QA四个角色的沟通真是越来越重要了，网上的读者体文章都说过，你对自己当前所做事情的理解越深，你就越接近于一个超级程序员。</p>
 
 <p>总之，代码需要更好的结构，但每天和其他其他几个职位的同事交流感情似乎更加重要，我是认真考虑这种事情的，我打算下一个项目里我每天都抽出固定的时间来分别问他们三个问题，即使问一下他们的手机是否升级到了最近版本的系统也不错！</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/">记录UIPageViewController不能正确地setNavigationBarHidden的一个坑</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:25:15+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>今天碰到一个奇怪bug：UIPageViewController的viewControllers里面做</p>
+  <entry>
+    <title type="html"><![CDATA[记录UIPageViewController不能正确地setNavigationBarHidden的一个坑]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/"/>
+    <updated>2013-12-06T17:25:15+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-[?]-ge-keng</id>
+    <content type="html"><![CDATA[<p>今天碰到一个奇怪bug：UIPageViewController的viewControllers里面做</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class=''><span class='line'>[self.navigationController setNavigationBarHidden:YES animated:animated];</span></code></pre></td></tr></table></div></figure>
@@ -371,42 +177,15 @@
 <p>so，为了在iOS5和iOS6里都能正确地在UIPageViewController一显示就隐藏navbar，只要把setNavigationBarHidden写到UIPageViewController的viewWillAppear。听起像白痴的废话，都是苹果造成的！</p>
 
 <p>莫名其妙的一个坑，UIPageViewController Class Reference什么都没提起！！！</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/zui-jin/">最近</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:22:37+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>最近听的一首歌是beyond的《卑面派对》
+  <entry>
+    <title type="html"><![CDATA[最近]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/zui-jin/"/>
+    <updated>2013-12-06T17:22:37+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/zui-jin</id>
+    <content type="html"><![CDATA[<p>最近听的一首歌是beyond的《卑面派对》
 你话唔俾面
 佢话唔赏面
 似为名节做奴隶
@@ -439,42 +218,15 @@
 <p>在这10000个小时内，我会重复，会犯错，会看着别人离开，可能自己也离开，但我不会放弃。按照251个工作日计算，一天算平均5小时在做开发，那么一年就花了1200多个小时，照这个速度，还要7年才能满。为了赶在苹果倒闭之前完成计划，唯一的方法只有和时间赛跑了。</p>
 
 <p>希望我老了看到这些最近，不会感到太过后悔。</p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma/">在UIWebView中调用Object-c本地代码</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:20:59+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>有些时候，HTML5可以做很酷的事情，比如绚丽的动画，或者快速开发跨平台的产品模型。于是我们希望JS代码和Native App多做些交互，比如在UIWebView的JS代码中调用本地的Object-c代码。</p>
+  <entry>
+    <title type="html"><![CDATA[在UIWebView中调用Object-c本地代码]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma/"/>
+    <updated>2013-12-06T17:20:59+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma</id>
+    <content type="html"><![CDATA[<p>有些时候，HTML5可以做很酷的事情，比如绚丽的动画，或者快速开发跨平台的产品模型。于是我们希望JS代码和Native App多做些交互，比如在UIWebView的JS代码中调用本地的Object-c代码。</p>
 
 <p>实际的需求是我们需要在APP里展示一个动画，动画运行结束后自己消失。
 实现的思路是：让Parter做一个HTML5动画，然后用UIWebView调用本地的HTML5文件展示动画，在动画结束之后，用JS代码回调Object-c代码，dismiss掉UIWebView。我们知道UIWebView有一个@optional的Delegate：</p>
@@ -540,42 +292,15 @@
 <p>参考文档：</p>
 
 <p><a href="http://stackoverflow.com/questions/1662473/how-to-call-objective-c-from-javascript">http://stackoverflow.com/questions/1662473/how-to-call-objective-c-from-javascript</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category/">[翻译]给Object-c的Category新增Properties(Adding Properties to an Objective-C Category)</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:18:41+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>如果需要给一个category保存一些信息，很不幸，你不能直接给它新增实例变量，但你可以新增一个“Associated Reference”，文档在</p>
+  <entry>
+    <title type="html"><![CDATA[[翻译]给Object-c的Category新增Properties(Adding Properties to an Objective-C Category)]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category/"/>
+    <updated>2013-12-06T17:18:41+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category</id>
+    <content type="html"><![CDATA[<p>如果需要给一个category保存一些信息，很不幸，你不能直接给它新增实例变量，但你可以新增一个“Associated Reference”，文档在</p>
 
 <p><a href="https://developer.apple.com/library/ios/#DOCUMENTATION/Cocoa/Conceptual/ObjectiveC/Chapters/ocAssociativeReferences.html">这里</a></p>
 
@@ -631,42 +356,15 @@
 <p>注：@property为assign的时候，如果property指向的对象已经被释放，用 ![]self styleName]貌似不能判断为空，property已经成了野指针，需谨慎使用以免带来bug。</p>
 
 <p>原文地址：<a href="http://www.davidhamrick.com/2012/02/12/Adding-Properties-to-an-Objective-C-Category.html">http://www.davidhamrick.com/2012/02/12/Adding-Properties-to-an-Objective-C-Category.html</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan/">Mac OS X 10.8.2 下尝试Go语言</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T17:16:30+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><h2>安装Go</h2>
+  <entry>
+    <title type="html"><![CDATA[Mac OS X 10.8.2 下尝试Go语言]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan/"/>
+    <updated>2013-12-06T17:16:30+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan</id>
+    <content type="html"><![CDATA[<h2>安装Go</h2>
 
 <p>*. 安装Mercurial</p>
 
@@ -729,42 +427,15 @@ func main() {
 
 
 <p>参考资料：<a href="https://golang-china.googlecode.com/svn/trunk/Chinese/golang.org/index.html#toc2">Go语言文档</a></p>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa/">APUE源码编译方法</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2013-12-06T16:17:01+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>拿书上的第一段源码作为例子：</p>
+  <entry>
+    <title type="html"><![CDATA[APUE源码编译方法]]></title>
+    <link href="http://chisj.com/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa/"/>
+    <updated>2013-12-06T16:17:01+08:00</updated>
+    <id>http://chisj.com/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa</id>
+    <content type="html"><![CDATA[<p>拿书上的第一段源码作为例子：</p>
 
 <pre><code>#include "apue.h"
 #include &lt;dirent.h&gt;
@@ -818,83 +489,7 @@ BOOTCAMP
 File
 MacSys
 </code></pre>
-</div>
+]]></content>
+  </entry>
   
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
-  
-    <section>
-  	<h1>About Me</h1>
-  	<p>iOS程序员</p>
-  	<p>阿森纳球迷，空手道修炼者</p> 
-    <p>人在福州</p>
-    <p>chisj2012#gmail.com</p>
-</section>
-
-<section>
-  <h1>Recent Posts</h1>
-  <ul id="recent_posts">
-    
-      <li class="post">
-        <a href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/">如何去除UISearchBar颜色的阴影</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/">初练空手道的几点感悟</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/06/sentestingkit-not-loaded/">SenTestingKit Not Loaded</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/06/gai-liao-san-zhou-de-bug/">改了三周的bug</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/">记录UIPageViewController不能正确地setNavigationBarHidden的一个坑</a>
-      </li>
-    
-  </ul>
-</section>
-
-  
-</aside>
-
-    </div>
-  </div>
-  <footer role="contentinfo"><p>
-  Copyright &copy; 2013 - Chisj -
-  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
-</p>
-
-</footer>
-  
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F5d77bc862f24fbf7b96ef97a91590ee4' type='text/javascript'%3E%3C/script%3E"));
-</script>
-
-
-</body>
-</html>
+</feed>

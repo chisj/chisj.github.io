@@ -1,0 +1,290 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>APUE源码编译方法 - 池上金的技术博客</title>
+  <meta name="author" content="Chisj">
+
+  
+  <meta name="description" content="拿书上的第一段源码作为例子： #include "apue.h"
+#include &lt;dirent.h&gt; int main(int argc, char *argv[]) { DIR *dp; struct dirent *dirp; if (argc != 2) { err_quit &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chisj.com/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="池上金的技术博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46268053-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">池上金的技术博客</a></h1>
+  
+    <h2>不忘初心，方得始终</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:chisj.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">APUE源码编译方法</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T16:17:01+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>拿书上的第一段源码作为例子：</p>
+
+<pre><code>#include "apue.h"
+#include &lt;dirent.h&gt;
+
+int main(int argc, char *argv[]) {
+    DIR *dp;
+    struct dirent *dirp;
+
+    if (argc != 2) {
+        err_quit("usage:ls direntory_name");
+    }
+    if ((dp = opendir(argv[1])) == NULL)
+    err_sys("can't open %s", argv[1]);
+    while ((dirp =  readdir(dp)) != NULL)
+    printf("%s\n", dirp-&gt;d_name);
+
+    closedir(dp);
+    exit(0);
+}
+</code></pre>
+
+<p>源码里的apue.h并没有实现err_quit函数，因为实现在apue源码包的lib里。</p>
+
+<p>先下载apue源码包：<a href="http://download.csdn.net/detail/i2c_rs485/4614061">http://download.csdn.net/detail/i2c_rs485/4614061</a>  (第二版使用，不保证更新)</p>
+
+<p>然后：</p>
+
+<ol>
+<li><p>解压文件到apue.2e目录</p></li>
+<li><p>修改相应平台的文件,我使用的是mac,所以修改Make.defines.macos
+你修改的只需要这一行WKDIR=/home/your_dir/apue2e_src/apue.2e,改成自己的目录路径</p></li>
+<li><p>cd到apue.2e目录的lib目录下， 执行make -f macos.mk，之后你会在lib目录下面找到libapue.a这个文件.
+现在,你可以把它拷贝到任何地方,在编写例子的时候,你就可以</p></li>
+<li><p>拷贝apue2e_src/apue.2e/include/apue.h和apue2e_src/apue.2e/lib/libapue.a
+到你的源代码目录。</p></li>
+<li><p>使用gcc -o hello hello.c libapue.a来编译你的源代码</p></li>
+</ol>
+
+
+<p>使用上面的方法编译第一段源码：</p>
+
+<pre><code>gcc -o myls myls.c libapue.a 
+</code></pre>
+
+<p>运行：</p>
+
+<pre><code>unit_1 ihome$ ./myls /Volumes
+.
+..
+BOOTCAMP
+File
+MacSys
+</code></pre>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Chisj</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-12-06T16:17:01+08:00" pubdate data-updated="true">Dec 6<span>th</span>, 2013</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+  
+      <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+	<span class="jiathis_txt">分享到：</span>
+	<a class="jiathis_button_tools_2"></a>
+	<a class="jiathis_button_tools_3"></a>
+	<a class="jiathis_button_tools_4"></a>
+	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+	<a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1372407507182199" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+<!-- UY BEGIN -->
+<div id="uyan_frame"></div>
+<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js"></script>
+<!-- UY END -->
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan/" title="Next Post: Mac OS X 10.8.2 下尝试Go语言">Mac OS X 10.8.2 下尝试Go语言 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  	<h1>About Me</h1>
+  	<p>iOS程序员</p>
+  	<p>阿森纳球迷，空手道修炼者</p> 
+    <p>人在福州</p>
+    <p>chisj2012#gmail.com</p>
+</section>
+
+<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/">如何去除UISearchBar颜色的阴影</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/">初练空手道的几点感悟</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/sentestingkit-not-loaded/">SenTestingKit Not Loaded</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/gai-liao-san-zhou-de-bug/">改了三周的bug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/">记录UIPageViewController不能正确地setNavigationBarHidden的一个坑</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2013 - Chisj -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F5d77bc862f24fbf7b96ef97a91590ee4' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+
+</body>
+</html>
