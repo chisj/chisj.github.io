@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[池上金的技术博客]]></title>
-  <link href="http://chisj.com/atom.xml" rel="self"/>
-  <link href="http://chisj.com/"/>
-  <updated>2014-11-25T17:00:29+08:00</updated>
-  <id>http://chisj.com/</id>
+  <link href="http://chisj.github.io./atom.xml" rel="self"/>
+  <link href="http://chisj.github.io./"/>
+  <updated>2014-11-25T17:27:43+08:00</updated>
+  <id>http://chisj.github.io./</id>
   <author>
     <name><![CDATA[Chisj]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[如何去除UISearchBar颜色的阴影]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/"/>
     <updated>2013-12-06T17:32:46+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying</id>
+    <id>http://chisj.github.io./blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying</id>
     <content type="html"><![CDATA[<p>其实是UISearchBar有一个不对外开放的“背景View”：UISearchBarBackground。如果你想让UISearchBar变得“扁平”，或者定制一些特别颜色，设置tintColor或者backgroundColor都是没有理想效果的——依然会得到一个带阴影的颜色。</p>
 
 <p>那么，就让那讨厌的“背景View”透明吧：</p>
@@ -47,9 +47,9 @@
   
   <entry>
     <title type="html"><![CDATA[初练空手道的几点感悟]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/"/>
     <updated>2013-12-06T17:30:41+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu</id>
+    <id>http://chisj.github.io./blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu</id>
     <content type="html"><![CDATA[<p>两周前，我开始练习空手道，从最初的礼仪、体能和基本技开始，在指导和教练的带领下，初步领略到这门武术的一些精妙之处。记录这些心得，以便未来的自己反省，如果因此给有心之人带来一点点启迪，则“善莫大焉”。</p>
 
 <h4>不忘初心</h4>
@@ -93,9 +93,9 @@
   
   <entry>
     <title type="html"><![CDATA[SenTestingKit Not Loaded]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/sentestingkit-not-loaded/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/sentestingkit-not-loaded/"/>
     <updated>2013-12-06T17:28:02+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/sentestingkit-not-loaded</id>
+    <id>http://chisj.github.io./blog/2013/12/06/sentestingkit-not-loaded</id>
     <content type="html"><![CDATA[<p>上次因为新工程的迁移，为了图方便直接把旧的引用包全选拖动到新建的工程里，结果出现了这个错误并闪退。
 搜索了一下:</p>
 
@@ -110,9 +110,9 @@
   
   <entry>
     <title type="html"><![CDATA[改了三周的bug]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/gai-liao-san-zhou-de-bug/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/gai-liao-san-zhou-de-bug/"/>
     <updated>2013-12-06T17:26:54+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/gai-liao-san-zhou-de-bug</id>
+    <id>http://chisj.github.io./blog/2013/12/06/gai-liao-san-zhou-de-bug</id>
     <content type="html"><![CDATA[<p>过去的三周，我基本上是在解决91执行的bug，很多很多的bug，五六十个吧，当它们被标记为closed之后，我甚至都不愿再看。</p>
 
 <p>为什么会有这么多bug！！</p>
@@ -143,9 +143,9 @@
   
   <entry>
     <title type="html"><![CDATA[记录UIPageViewController不能正确地setNavigationBarHidden的一个坑]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-%5B%3F%5D-ge-keng/"/>
     <updated>2013-12-06T17:25:15+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-[?]-ge-keng</id>
+    <id>http://chisj.github.io./blog/2013/12/06/ji-lu-uipageviewcontrollerbu-neng-zheng-que-di-setnavigationbarhiddende-[?]-ge-keng</id>
     <content type="html"><![CDATA[<p>今天碰到一个奇怪bug：UIPageViewController的viewControllers里面做</p>
 
 <figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -182,9 +182,9 @@
   
   <entry>
     <title type="html"><![CDATA[最近]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/zui-jin/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/zui-jin/"/>
     <updated>2013-12-06T17:22:37+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/zui-jin</id>
+    <id>http://chisj.github.io./blog/2013/12/06/zui-jin</id>
     <content type="html"><![CDATA[<p>最近听的一首歌是beyond的《卑面派对》
 你话唔俾面
 佢话唔赏面
@@ -223,9 +223,9 @@
   
   <entry>
     <title type="html"><![CDATA[在UIWebView中调用Object-c本地代码]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma/"/>
     <updated>2013-12-06T17:20:59+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma</id>
+    <id>http://chisj.github.io./blog/2013/12/06/zai-uiwebviewzhong-diao-yong-object-cben-di-dai-ma</id>
     <content type="html"><![CDATA[<p>有些时候，HTML5可以做很酷的事情，比如绚丽的动画，或者快速开发跨平台的产品模型。于是我们希望JS代码和Native App多做些交互，比如在UIWebView的JS代码中调用本地的Object-c代码。</p>
 
 <p>实际的需求是我们需要在APP里展示一个动画，动画运行结束后自己消失。
@@ -297,9 +297,9 @@
   
   <entry>
     <title type="html"><![CDATA[[翻译]给Object-c的Category新增Properties(Adding Properties to an Objective-C Category)]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category/"/>
     <updated>2013-12-06T17:18:41+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category</id>
+    <id>http://chisj.github.io./blog/2013/12/06/fan-yi-gei-object-cde-categoryxin-zeng-properties-adding-properties-to-an-objective-c-category</id>
     <content type="html"><![CDATA[<p>如果需要给一个category保存一些信息，很不幸，你不能直接给它新增实例变量，但你可以新增一个“Associated Reference”，文档在</p>
 
 <p><a href="https://developer.apple.com/library/ios/#DOCUMENTATION/Cocoa/Conceptual/ObjectiveC/Chapters/ocAssociativeReferences.html">这里</a></p>
@@ -361,9 +361,9 @@
   
   <entry>
     <title type="html"><![CDATA[Mac OS X 10.8.2 下尝试Go语言]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan/"/>
     <updated>2013-12-06T17:16:30+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan</id>
+    <id>http://chisj.github.io./blog/2013/12/06/mac-os-x-10-dot-8-2-xia-chang-shi-goyu-yan</id>
     <content type="html"><![CDATA[<h2>安装Go</h2>
 
 <p>*. 安装Mercurial</p>
@@ -432,9 +432,9 @@ func main() {
   
   <entry>
     <title type="html"><![CDATA[APUE源码编译方法]]></title>
-    <link href="http://chisj.com/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa/"/>
+    <link href="http://chisj.github.io./blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa/"/>
     <updated>2013-12-06T16:17:01+08:00</updated>
-    <id>http://chisj.com/blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa</id>
+    <id>http://chisj.github.io./blog/2013/12/06/apueyuan-ma-bian-yi-fang-fa</id>
     <content type="html"><![CDATA[<p>拿书上的第一段源码作为例子：</p>
 
 <pre><code>#include "apue.h"

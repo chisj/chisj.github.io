@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://chisj.com/sitemap.xml 
+Sitemap: http://chisj.github.io./sitemap.xml 
