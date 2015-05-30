@@ -98,3 +98,6 @@ google_analytics_tracking_id: UA-46268053-1
 
 #weibo
 weibo_share: true
+
+# jiathis
+comment_share: true
