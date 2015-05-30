@@ -7,6 +7,7 @@ categories: Octopress
 
 #UINavigationController返回手势失效问题
 
+
 从iOS7开始，系统为UINavigationController提供了一个interactivePopGestureRecognizer用于右滑返回(pop),但是，如果自定了back button或者隐藏了navigationBar，该手势就失效了。
 
 ![image](http://7xjbdg.com1.z0.glb.clouddn.com/抓狂.png) 
