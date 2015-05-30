@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Octopress | 池上金的技术博客]]></title>
+  <link href="http://chisj.github.io./blog/categories/octopress/atom.xml" rel="self"/>
+  <link href="http://chisj.github.io./"/>
+  <updated>2015-05-30T14:20:27+08:00</updated>
+  <id>http://chisj.github.io./</id>
+  <author>
+    <name><![CDATA[Chisj]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[UINavigationController返回手势失效问题]]></title>
+    <link href="http://chisj.github.io./blog/2015/05/27/uinavigationcontrollerfan-hui-shou-shi-shi-xiao-wen-ti/"/>
+    <updated>2015-05-27T00:00:00+08:00</updated>
+    <id>http://chisj.github.io./blog/2015/05/27/uinavigationcontrollerfan-hui-shou-shi-shi-xiao-wen-ti</id>
+    <content type="html"><![CDATA[<h1>UINavigationController返回手势失效问题</h1>
+
+<p>从iOS7开始，系统为UINavigationController提供了一个interactivePopGestureRecognizer用于右滑返回(pop),但是，如果自定了back button或者隐藏了navigationBar，该手势就失效了。</p>
+
+<p><img src="http://7xjbdg.com1.z0.glb.clouddn.com/%E6%8A%93%E7%8B%82.png" alt="image" /></p>
+
+<p>这是为什么呢？</p>
+
+<h3>原因</h3>
+
+<p>我们知道，interactivePopGestureRecognizer从手势触发到行为发生，要经过下面的阶段：</p>
+
+<p><img src="http://7xjbdg.com1.z0.glb.clouddn.com/%E6%89%8B%E5%8A%BF%E8%BF%87%E7%A8%8B.png" alt="image" /></p>
+
+<p>interactivePopGestureRecognizer还存在，但没有起作用，可能是delegate里被阻断了没调用target/action，或者是调用了target/action没运行动画。</p>
+
+<p>经过尝试（参考别人博客），发现自定义返回按钮或者隐藏navigationBar导致的该手势未起作用是因为在delegate阶段被阻断了。</p>
+
+<p>如果我们知道action的名字，则可以添加一个自定义的滑动手势，直接调用该系统action。但API文档并没有提供。</p>
+
+<p>结果就是要么自己实现滑动返回的动画action，要么自己重写interactivePopGestureRecognizer的delegate以让手势继续下去，触发系统的动画action。</p>
+
+<h3>实现方法</h3>
+
+<p>那就把delegate自己实现一下吧。</p>
+
+<p>新建一个类<code>BaseNavigationController</code>,实现delegate：</p>
+
+<pre><code>- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.interactivePopGestureRecognizer.delegate =  self;
+}
+</code></pre>
+
+<p>让手势生效</p>
+
+<pre><code>- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (self.viewControllers.count &lt;= 1 ) {
+        return NO;
+    }
+
+    return YES;
+}
+</code></pre>
+
+<p>在需要滑动返回的地方的<code>UINavigationController</code>换成<code>BaseNavigationController</code>。</p>
+
+<p>完成！</p>
+
+<p><img src="http://7xjbdg.com1.z0.glb.clouddn.com/%E8%B5%9E.png" alt="image" /></p>
+
+<p>然后考虑到在push动画发生的时候，禁止滑动手势，在<code>BaseNavigationController</code>添加</p>
+
+<pre><code>- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+    [super pushViewController:viewController animated:animated];
+    self.interactivePopGestureRecognizer.enabled = NO;
+}
+</code></pre>
+
+<p>在使用navigationController的viewcontroller里添加</p>
+
+<pre><code>- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+}
+</code></pre>
+
+<h3>结果</h3>
+
+<p>当然不需要把上面的代码都抄一遍，因为这么通用的功能由一位韩国开发者做成组件，放在了github <a href="https://github.com/devxoul/SwipeBack">https://github.com/devxoul/SwipeBack</a>。你只需要</p>
+
+<pre><code>platform :ios, '7.0'
+pod 'SwipeBack', '~&gt; 1.0'
+</code></pre>
+
+<p>该工程用了category+JRSwizzle交换了上面涉及到的UINavigationController的那些方法，还额外考虑了只自定义back button而不隐藏navigationBar的情况。无需一行代码，让系统的右滑返回动画重新回来！</p>
+]]></content>
+  </entry>
+  
+</feed>

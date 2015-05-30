@@ -1,4 +1,100 @@
-<h1>UINavigationController返回手势失效问题</h1>
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>UINavigationController返回手势失效问题 - 池上金的技术博客</title>
+  <meta name="author" content="Chisj">
+
+  
+  <meta name="description" content="UINavigationController返回手势失效问题 从iOS7开始，系统为UINavigationController提供了一个interactivePopGestureRecognizer用于右滑返回(pop),但是，如果自定了back button或者隐藏了navigationBar &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://chisj.github.io./blog/2015/05/27/uinavigationcontrollerfan-hui-shou-shi-shi-xiao-wen-ti/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="池上金的技术博客" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="/javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-46268053-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">池上金的技术博客</a></h1>
+  
+    <h2>不忘初心，方得始终</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="sitesearch" value="chisj.github.io.">
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">首页</a></li>
+  <li><a href="/blog/archives">所有文章</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">UINavigationController返回手势失效问题</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+<time class='entry-date' datetime='2015-05-27T00:00:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><h1>UINavigationController返回手势失效问题</h1>
 
 <p>从iOS7开始，系统为UINavigationController提供了一个interactivePopGestureRecognizer用于右滑返回(pop),但是，如果自定了back button或者隐藏了navigationBar，该手势就失效了。</p>
 
@@ -95,3 +191,115 @@
 
 
 <p>该工程用了category+JRSwizzle交换了上面涉及到的UINavigationController的那些方法，还额外考虑了只自定义back button而不隐藏navigationBar的情况。无需一行代码，让系统的右滑返回动画重新回来！</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Chisj</span></span>
+
+      
+
+
+
+
+<time class='entry-date' datetime='2015-05-27T00:00:00+08:00'><span class='date'><span class='date-month'>May</span> <span class='date-day'>27</span><span class='date-suffix'>th</span>, <span class='date-year'>2015</span></span> <span class='time'>12:00 am</span></time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/octopress/'>octopress</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/" title="Previous Post: 如何去除UISearchBar颜色的阴影">&laquo; 如何去除UISearchBar颜色的阴影</a>
+      
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  	<h1>关于</h1>
+  	<p>iOS程序员</p>
+  	<p>阿森纳球迷，空手道修炼者</p> 
+    <p>人在福州</p>
+    <p>chisj2012#gmail.com</p>
+</section>
+
+<section>
+    <h1>友情链接</h1>
+    <p><a href="http://game.tongbu.com/" target="_blank">苹果手机游戏(同步推)</a></p>
+
+</section><section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2015/05/27/uinavigationcontrollerfan-hui-shou-shi-shi-xiao-wen-ti/">UINavigationController返回手势失效问题</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/ru-he-qu-chu-uisearchbaryan-se-de-yin-ying/">如何去除UISearchBar颜色的阴影</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/chu-lian-kong-shou-dao-de-ji-dian-gan-wu/">初练空手道的几点感悟</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/sentestingkit-not-loaded/">SenTestingKit Not Loaded</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2013/12/06/gai-liao-san-zhou-de-bug/">改了三周的bug</a>
+      </li>
+    
+  </ul>
+</section>
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - Chisj -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

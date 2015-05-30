@@ -4,7 +4,7 @@
   <title><![CDATA[池上金的技术博客]]></title>
   <link href="http://chisj.github.io./atom.xml" rel="self"/>
   <link href="http://chisj.github.io./"/>
-  <updated>2015-05-28T00:16:05+08:00</updated>
+  <updated>2015-05-30T14:20:27+08:00</updated>
   <id>http://chisj.github.io./</id>
   <author>
     <name><![CDATA[Chisj]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Uinavigationcontrollerfan Hui Shou Shi Shi Xiao Wen Ti]]></title>
+    <title type="html"><![CDATA[UINavigationController返回手势失效问题]]></title>
     <link href="http://chisj.github.io./blog/2015/05/27/uinavigationcontrollerfan-hui-shou-shi-shi-xiao-wen-ti/"/>
     <updated>2015-05-27T00:00:00+08:00</updated>
     <id>http://chisj.github.io./blog/2015/05/27/uinavigationcontrollerfan-hui-shou-shi-shi-xiao-wen-ti</id>
@@ -517,8 +517,8 @@ func main() {
 <h2>Go之初体验</h2>
 
 <ol>
-<li><p>Go语言语法和C语言类似，很适合科班程序员学习新语言或者底层C语言开发人员学应用开发的时候使用。它没有C语言那么自由，比如{}的语句块，前一个{必须放在控制语句后面，不得另起一行，在C语言中，有一种严格的编码规范就是像Go这样，但是这一点貌似不能说明什么，Go只是少了一种无谓的选择。不过，if，for和switch语句控制快少了()，语句结尾不需要&#8221;;&ldquo;，甚至，少掉了else语句，干掉了异常处理。</p></li>
-<li><p>不过，switch语句更智能了，函数支持多个返回值了，并且只要简单的&#8221;return reval1, reval2&#8221;就可以返回两个值。Go可真是该减肥的地方就减肥了，该丰满的地方就丰满到了恰到好处，我很喜欢的Object-c虽然也近乎完美地扩展了C语言，但其封闭的生态首先比不上Go了.一味简单地往C语言身上加特性，就没有Go的减肥功效啦！</p></li>
+<li><p>Go语言语法和C语言类似，很适合科班程序员学习新语言或者底层C语言开发人员学应用开发的时候使用。它没有C语言那么自由，比如{}的语句块，前一个{必须放在控制语句后面，不得另起一行，在C语言中，有一种严格的编码规范就是像Go这样，但是这一点貌似不能说明什么，Go只是少了一种无谓的选择。不过，if，for和switch语句控制快少了()，语句结尾不需要";&ldquo;，甚至，少掉了else语句，干掉了异常处理。</p></li>
+<li><p>不过，switch语句更智能了，函数支持多个返回值了，并且只要简单的"return reval1, reval2"就可以返回两个值。Go可真是该减肥的地方就减肥了，该丰满的地方就丰满到了恰到好处，我很喜欢的Object-c虽然也近乎完美地扩展了C语言，但其封闭的生态首先比不上Go了.一味简单地往C语言身上加特性，就没有Go的减肥功效啦！</p></li>
 <li><p>其他更强大的并行特性，网络编程支持等，以后学习了再分享。</p></li>
 </ol>
 
