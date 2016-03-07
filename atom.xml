@@ -4,7 +4,7 @@
   <title><![CDATA[池上金的技术博客]]></title>
   <link href="http://chisj.github.io./atom.xml" rel="self"/>
   <link href="http://chisj.github.io./"/>
-  <updated>2016-01-27T14:28:17+08:00</updated>
+  <updated>2016-03-07T22:27:38+08:00</updated>
   <id>http://chisj.github.io./</id>
   <author>
     <name><![CDATA[Chisj]]></name>
@@ -12,6 +12,42 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[将Swift项目中的TODO显示为Warning]]></title>
+    <link href="http://chisj.github.io./blog/2016/03/07/jiang-swiftxiang-mu-zhong-de-todoxian-shi-wei-warning/"/>
+    <updated>2016-03-07T22:25:38+08:00</updated>
+    <id>http://chisj.github.io./blog/2016/03/07/jiang-swiftxiang-mu-zhong-de-todoxian-shi-wei-warning</id>
+    <content type="html"><![CDATA[<p>我的代码很少注释<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup>。但有一个例外：使用// TODO: and // FIXME:以高亮我不久后将要重新查看的代码段。这样的好处是在编辑框的条专栏弹窗里，点击一下粗体字就能跳转到该行代码。</p>
+
+<p><img src="http://ww2.sinaimg.cn/large/73a4517bgw1f1on1p5h0qj20m808o751.jpg" alt="icon1" /></p>
+
+<p>这也有个问题，就是容易忘记。我曾经把它们记在我的todo管理里，<a href="http://culturedcode.com/things/">Tings</a> . 这又变成了重复工作。如何更好地标记这些错误呢？</p>
+
+<p><a href="http://jeffreysambells.com/2013/01/31/generate-xcode-warnings-from-todo-comments">杰弗里Sambells写了一篇</a>如何在Objective-C工程中将这些注释变成Xcode Warning的文章。稍加改动，这是一个将Swift项目的TODO:和FIXME：显示为Warning的Script(应用于工程的Build Phases设置)：</p>
+
+<pre><code>TAGS="TODO:|FIXME:"
+echo "searching ${SRCROOT} for ${TAGS}"
+find "${SRCROOT}" \( -name "*.swift" \) -print0 | xargs -0 egrep --with-filename --line-    number --only-matching "($TAGS).*\$" | perl -p -e "s/($TAGS)/ warning: \$1/"
+</code></pre>
+
+<p>运行一下，TODO:和FIXME:变成了醒目的警告。</p>
+
+<p><img src="http://ww3.sinaimg.cn/large/73a4517bgw1f1onk1chmwj20m8025mxl.jpg" alt="icon2" /></p>
+
+<p>比起记录在todo list的东西，这些黄色的警告总让我有莫大的冲动去清理他们，你觉得呢？</p>
+
+<p><a href="https://bendodson.com/weblog/2014/10/02/showing-todo-as-warning-in-swift-xcode-project/">原文地址https://bendodson.com/weblog/2014/10/02/showing-todo-as-warning-in-swift-xcode-project/</a></p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>If your code needs commenting, it isn’t clear enough. Refactor until it is. If it doesn’t make sense because of semantics, rethink your naming conventions.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[UINavigationController返回手势失效问题]]></title>
